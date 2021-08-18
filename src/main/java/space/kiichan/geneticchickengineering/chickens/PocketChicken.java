@@ -256,7 +256,7 @@ public class PocketChicken<T extends LivingEntity> extends SimpleSlimefunItem<It
                     }
                 } else if (this.displayResources && dna.isKnown()) {
                     entity.setCustomName(name);
-                    entity.setCustomNameVisible​(true);
+                    entity.setCustomNameVisible(true);
                 }
             }
         };

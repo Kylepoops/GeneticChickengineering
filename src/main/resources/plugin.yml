@@ -6,11 +6,11 @@ description: An addon for SlimeFun that adds resource chickens
 
 main: space.kiichan.geneticchickengineering.GeneticChickengineering
 
-website: https://github.com/kii-chan-reloaded/GeneticChickengineering
+website: https://github.com/Kylepoops/GeneticChickengineering
 
 depend: [Slimefun]
 
-version: ${project.version}
+version: @version@
 
 api-version: 1.16
 

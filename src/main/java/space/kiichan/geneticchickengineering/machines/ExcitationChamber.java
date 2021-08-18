@@ -5,6 +5,8 @@ import io.github.thebusybiscuit.cscorelib2.inventory.InvUtils;
 import io.github.thebusybiscuit.cscorelib2.inventory.ItemUtils;
 import io.github.thebusybiscuit.cscorelib2.inventory.MenuClickHandler;
 import io.github.thebusybiscuit.cscorelib2.item.CustomItem;
+import io.github.thebusybiscuit.slimefun4.core.machines.MachineProcessor;
+import io.github.thebusybiscuit.slimefun4.implementation.operations.CraftingOperation;
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
 import java.util.HashMap;
 import java.util.Map;
@@ -97,10 +99,9 @@ public class ExcitationChamber extends AContainer {
     protected void tick(Block b) {
         super.tick(this.initBlock(b));
         BlockMenu inv = BlockStorage.getInventory(b);
-        if (isProcessing(b)) {
+        if (getMachineProcessor().getOperation(b) != null) {
             if (this.findNextRecipe(inv) == null) {
-                progress.remove(b);
-                processing.remove(b);
+                getMachineProcessor().endOperation(b);
                 inv.replaceExistingItem(22, this.blackPane);
                 this.resources.remove(inv);
             }

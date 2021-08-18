@@ -21,7 +21,7 @@ public class Completer implements TabCompleter {
     }
 
     @Override
-    public List<String> onTabComplete​(CommandSender sender, Command command, String alias, String[] args) {
+    public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
         List<String> out = new ArrayList<String>();
         if (args.length == 0) {
             for (String name: this.commands.getSubcommands()) {

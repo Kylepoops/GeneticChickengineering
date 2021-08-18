@@ -83,7 +83,7 @@ public class GeneticChickengineering extends JavaPlugin implements SlimefunAddon
         this.painChance = clamp(0d, cfg.getDouble("options.pain-chance"), 100d);
 
         if (cfg.getOrSetDefault("options.auto-update", false) && getDescription().getVersion().startsWith("DEV - ")) {
-            new GitHubBuildsUpdater(this, getFile(), "kii-chan-reloaded/GeneticChickengineering/master").start();
+            //new GitHubBuildsUpdater(this, getFile(), "kii-chan-reloaded/GeneticChickengineering/master").start();
         }
 
         SlimefunItemStack chickenIcon = new SlimefunItemStack("GCE_ICON", "1638469a599ceef7207537603248a9ab11ff591fd378bea4735b346a7fae893", "&eGenetic Chickengineering", "", "&a> Click to open");

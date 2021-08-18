@@ -46,7 +46,7 @@ public class PrivateCoop extends AContainer {
     @Override
     protected void tick(Block b) {
         super.tick(b);
-        if (isProcessing(b)) {
+        if (getMachineProcessor().getOperation(b) != null) {
             if (Math.random() < 0.25) {
                 Location l = b.getLocation().toCenterLocation();
                 l.getWorld().spawnParticle(Particle.HEART, l.add(0,0.5,0), 2, 0.2, 0, 0.2);
@@ -54,8 +54,7 @@ public class PrivateCoop extends AContainer {
             BlockMenu inv = BlockStorage.getInventory(b);
             // Check if parent chickens have been removed
             if (this.getParents(inv).size() != 2) {
-                progress.remove(b);
-                processing.remove(b);
+                getMachineProcessor().endOperation(b);
                 inv.replaceExistingItem(22, new CustomItem(Material.BLACK_STAINED_GLASS_PANE, " "));
             }
         }
