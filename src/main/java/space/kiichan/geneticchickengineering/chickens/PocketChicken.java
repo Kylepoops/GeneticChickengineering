@@ -24,15 +24,14 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
+import org.jetbrains.annotations.NotNull;
 import space.kiichan.geneticchickengineering.GeneticChickengineering;
 import space.kiichan.geneticchickengineering.adapter.AnimalsAdapter;
-import space.kiichan.geneticchickengineering.chickens.ChickenTypes;
 import space.kiichan.geneticchickengineering.genetics.DNA;
-import space.kiichan.geneticchickengineering.items.GCEItems;
 
 public class PocketChicken<T extends LivingEntity> extends SimpleSlimefunItem<ItemUseHandler> implements NotPlaceable {
 
-    private final AnimalsAdapter adapter = new AnimalsAdapter<>(Chicken.class);
+    private final AnimalsAdapter<Chicken> adapter = new AnimalsAdapter<>(Chicken.class);
     private final NamespacedKey adapterkey;
     private final NamespacedKey dnakey;
     public GeneticChickengineering plugin;
@@ -184,8 +183,7 @@ public class PocketChicken<T extends LivingEntity> extends SimpleSlimefunItem<It
 
     public DNA getDNA(ItemStack chick) {
         PersistentDataContainer container = chick.getItemMeta().getPersistentDataContainer();
-        DNA dna = new DNA(container.get(dnakey, PersistentDataType.INTEGER_ARRAY));
-        return dna;
+        return new DNA(container.get(dnakey, PersistentDataType.INTEGER_ARRAY));
     }
 
     public int getDNAStrength(ItemStack chick) {
@@ -208,7 +206,7 @@ public class PocketChicken<T extends LivingEntity> extends SimpleSlimefunItem<It
             return 0d;
         }
         PersistentDataContainer container = chick.getItemMeta().getPersistentDataContainer();
-        JsonObject json = container.get(adapterkey, (PersistentDataType<String, JsonObject>) adapter);
+        JsonObject json = container.get(adapterkey, adapter);
         if (json != null) {
             return json.get("_health").getAsDouble();
         }
@@ -216,7 +214,7 @@ public class PocketChicken<T extends LivingEntity> extends SimpleSlimefunItem<It
     }
 
     @Override
-    public ItemUseHandler getItemHandler() {
+    public @NotNull ItemUseHandler getItemHandler() {
         return e -> {
             e.cancel();
 
@@ -228,7 +226,7 @@ public class PocketChicken<T extends LivingEntity> extends SimpleSlimefunItem<It
                 Chicken entity = b.getWorld().spawn(l.toCenterLocation(), Chicken.class);
 
                 PersistentDataContainer container = e.getItem().getItemMeta().getPersistentDataContainer();
-                JsonObject json = container.get(adapterkey, (PersistentDataType<String, JsonObject>) adapter);
+                JsonObject json = container.get(adapterkey, adapter);
                 int[] dnaState = container.get(dnakey, PersistentDataType.INTEGER_ARRAY);
                 DNA dna;
                 if (dnaState != null) {
@@ -304,7 +302,7 @@ public class PocketChicken<T extends LivingEntity> extends SimpleSlimefunItem<It
             return false;
         }
         PersistentDataContainer container = chick.getItemMeta().getPersistentDataContainer();
-        JsonObject json = container.get(adapterkey, (PersistentDataType<String, JsonObject>) adapter);
+        JsonObject json = container.get(adapterkey, adapter);
         if (json != null) {
             double oldhealth = json.get("_health").getAsDouble();
             double newhealth = Math.max(0d, Math.min(oldhealth - amount, 4d));
@@ -318,7 +316,7 @@ public class PocketChicken<T extends LivingEntity> extends SimpleSlimefunItem<It
 
     public boolean isAdult(ItemStack chick) {
         PersistentDataContainer container = chick.getItemMeta().getPersistentDataContainer();
-        JsonObject json = container.get(adapterkey, (PersistentDataType<String, JsonObject>) adapter);
+        JsonObject json = container.get(adapterkey, adapter);
         if (json != null) {
             return !json.get("baby").getAsBoolean();
         }
@@ -342,7 +340,7 @@ public class PocketChicken<T extends LivingEntity> extends SimpleSlimefunItem<It
             DNA dna = new DNA(container.get(dnakey, PersistentDataType.INTEGER_ARRAY));
 
             dna.learn();
-            JsonObject json = container.get(adapterkey, (PersistentDataType<String, JsonObject>) adapter);
+            JsonObject json = container.get(adapterkey, adapter);
             this.setLore(item, json, dna);
         }
 

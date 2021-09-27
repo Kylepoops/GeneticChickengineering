@@ -25,6 +25,7 @@ import org.bukkit.entity.Chicken;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.World;
+import org.jetbrains.annotations.NotNull;
 import space.kiichan.geneticchickengineering.chickens.ChickenTypes;
 import space.kiichan.geneticchickengineering.chickens.PocketChicken;
 import space.kiichan.geneticchickengineering.commands.Commands;
@@ -167,7 +168,7 @@ public class GeneticChickengineering extends JavaPlugin implements SlimefunAddon
     }
 
     @Override
-    public JavaPlugin getJavaPlugin() {
+    public @NotNull JavaPlugin getJavaPlugin() {
         return this;
     }
 
@@ -199,11 +200,10 @@ public class GeneticChickengineering extends JavaPlugin implements SlimefunAddon
             return;
         }
         List<World> ws = this.getServer().getWorlds();
-        List<String> found = new ArrayList<String>();
-        for (int i=0; i<ws.size(); i++) {
-            World w = ws.get(i);
-            for (int j=0; j<chicks.size(); j++) {
-                String uuid = chicks.get(j)[0];
+        List<String> found = new ArrayList<>();
+        for (World w : ws) {
+            for (String[] strings : chicks) {
+                String uuid = strings[0];
                 if (found.contains(uuid)) {
                     continue;
                 }
@@ -214,8 +214,8 @@ public class GeneticChickengineering extends JavaPlugin implements SlimefunAddon
             }
         }
         int c = 0;
-        for (int j=0; j<chicks.size(); j++) {
-            String uuid = chicks.get(j)[0];
+        for (String[] chick : chicks) {
+            String uuid = chick[0];
             if (found.contains(uuid)) {
                 continue;
             }

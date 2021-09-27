@@ -1,5 +1,6 @@
 package space.kiichan.geneticchickengineering.items;
 
+import io.github.thebusybiscuit.slimefun4.api.events.PlayerRightClickEvent;
 import io.github.thebusybiscuit.slimefun4.core.attributes.NotPlaceable;
 import io.github.thebusybiscuit.slimefun4.core.handlers.EntityInteractHandler;
 import io.github.thebusybiscuit.slimefun4.core.handlers.ItemUseHandler;
@@ -13,6 +14,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.World;
+import org.jetbrains.annotations.NotNull;
 import space.kiichan.geneticchickengineering.GeneticChickengineering;
 
 public class ChickenNet extends SimpleSlimefunItem<EntityInteractHandler> implements NotPlaceable {
@@ -26,7 +28,7 @@ public class ChickenNet extends SimpleSlimefunItem<EntityInteractHandler> implem
     }
 
     @Override
-    public EntityInteractHandler getItemHandler() {
+    public @NotNull EntityInteractHandler getItemHandler() {
         addItemHandler(getSecondItemHandler());
         return (e, i, o) -> {
             if (e.getRightClicked().getType() == EntityType.CHICKEN) {
@@ -41,6 +43,6 @@ public class ChickenNet extends SimpleSlimefunItem<EntityInteractHandler> implem
         };
     }
     public ItemUseHandler getSecondItemHandler() {
-        return (e) -> {e.cancel();};
+        return PlayerRightClickEvent::cancel;
     }
 }

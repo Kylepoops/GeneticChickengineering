@@ -15,6 +15,7 @@ import org.bukkit.Sound;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.inventory.ItemStack;
+import org.jetbrains.annotations.NotNull;
 import space.kiichan.geneticchickengineering.GeneticChickengineering;
 import space.kiichan.geneticchickengineering.genetics.DNA;
 import space.kiichan.geneticchickengineering.items.GCEItems;
@@ -31,7 +32,7 @@ public class ResourceEgg extends SimpleSlimefunItem<ItemUseHandler> implements N
         super(category, item, recipeType, new ItemStack[] {null, null, null, null, makeFakeChicken(plugin, resource), null, null, null, null});
         this.resource = resource;
         if (resource == Material.WATER) {
-            if (allowedInNether == false) {
+            if (!allowedInNether) {
                 this.action = (Block place) -> {
                     World w = place.getWorld();
                     if (w.getEnvironment() == World.Environment.NETHER) {
@@ -42,14 +43,10 @@ public class ResourceEgg extends SimpleSlimefunItem<ItemUseHandler> implements N
                     }
                 };
             } else {
-                this.action = (Block place) -> {
-                    place.setType(this.resource);
-                };
+                this.action = (Block place) -> place.setType(this.resource);
             }
         } else {
-            this.action = (Block place) -> {
-                place.setType(this.resource);
-            };
+            this.action = (Block place) -> place.setType(this.resource);
         }
     }
 
@@ -66,7 +63,7 @@ public class ResourceEgg extends SimpleSlimefunItem<ItemUseHandler> implements N
     }
 
     @Override
-    public ItemUseHandler getItemHandler() {
+    public @NotNull ItemUseHandler getItemHandler() {
         return e -> {
             e.cancel();
 

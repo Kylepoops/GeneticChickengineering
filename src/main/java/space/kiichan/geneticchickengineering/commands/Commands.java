@@ -17,7 +17,7 @@ public class Commands {
     private PluginCommand base;
     private Executor ex;
     private GeneticChickengineering plugin;
-    private Map<String, Subcommand> subcommands = new HashMap<String, Subcommand>();
+    private Map<String, Subcommand> subcommands = new HashMap<>();
     private Completer tc;
 
     public Commands(GeneticChickengineering plugin, Config cfg) {

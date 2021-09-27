@@ -28,6 +28,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * This is a simple Adapter that allows conversion between a {@link LivingEntity} and
@@ -61,19 +62,19 @@ public interface MobAdapter<T extends LivingEntity> extends PersistentDataType<S
         return lore;
     }
 
-    default Class<String> getPrimitiveType() {
+    default @NotNull Class<String> getPrimitiveType() {
         return String.class;
     }
 
-    default Class<JsonObject> getComplexType() {
+    default @NotNull Class<JsonObject> getComplexType() {
         return JsonObject.class;
     }
 
-    default String toPrimitive(JsonObject json, PersistentDataAdapterContext context) {
+    default @NotNull String toPrimitive(JsonObject json, @NotNull PersistentDataAdapterContext context) {
         return json.toString();
     }
 
-    default JsonObject fromPrimitive(String primitive, PersistentDataAdapterContext context) {
+    default @NotNull JsonObject fromPrimitive(@NotNull String primitive, @NotNull PersistentDataAdapterContext context) {
         return new JsonParser().parse(primitive).getAsJsonObject();
     }
 

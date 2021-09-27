@@ -15,6 +15,7 @@ interface Wrap {
     void unsafe() throws SQLException;
 }
 
+@SuppressWarnings({"SqlResolve", "SqlNoDataSourceInspection"})
 public class DBUtil {
     private String datadir;
     private Logger logger;
@@ -58,9 +59,7 @@ public class DBUtil {
     }
 
     public void commit() {
-        this.safely(() -> {
-            this.conn.commit();
-        });
+        this.safely(() -> this.conn.commit());
     }
 
     public void close() {
@@ -94,7 +93,7 @@ public class DBUtil {
     }
 
     public List<String[]> getAll() {
-        List<String[]> out = new ArrayList<String[]>();
+        List<String[]> out = new ArrayList<>();
         if (!this.delta) {
             return this.cache;
         }
@@ -117,8 +116,8 @@ public class DBUtil {
     public boolean has(String uuid) {
         // refresh the cache if need be
         this.getAll();
-        for (int i=0; i<this.cache.size(); i++) {
-            if (uuid.equals(this.cache.get(i)[0])) {
+        for (String[] strings : this.cache) {
+            if (uuid.equals(strings[0])) {
                 return true;
             }
         }
@@ -128,9 +127,9 @@ public class DBUtil {
     public String getDNAOrNull(String uuid) {
         // refresh the cache if need be
         this.getAll();
-        for (int i=0; i<this.cache.size(); i++) {
-            if (uuid.equals(this.cache.get(i)[0])) {
-                return this.cache.get(i)[1];
+        for (String[] strings : this.cache) {
+            if (uuid.equals(strings[0])) {
+                return strings[1];
             }
         }
         return null;

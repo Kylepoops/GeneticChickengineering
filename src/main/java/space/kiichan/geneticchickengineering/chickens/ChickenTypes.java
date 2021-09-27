@@ -13,7 +13,7 @@ import space.kiichan.geneticchickengineering.items.GCEItems;
 
 public final class ChickenTypes {
 
-    private ChickenTypes() {};
+    private ChickenTypes() {}
 
     private static final Map<Integer, Object[]> typemap = new LinkedHashMap<Integer, Object[]>() {
         {
@@ -88,19 +88,19 @@ public final class ChickenTypes {
         }
     };
 
-    public static final Object[] get(int typing) {
+    public static Object[] get(int typing) {
         return typemap.get(typing);
     }
 
-    public static final String getName(int typing) {
+    public static String getName(int typing) {
         return (String) typemap.get(typing)[0];
     }
 
-    public static final ItemStack getResource(int typing) {
+    public static ItemStack getResource(int typing) {
         return (ItemStack) typemap.get(typing)[1];
     }
 
-    public static final void registerChickens(Research research, PocketChicken pc, Category category, RecipeType rt) {
+    public static void registerChickens(Research research, PocketChicken pc, Category category, RecipeType rt) {
         for (int i=typemap.size()-1; i>-1; i--) {
             Object[] attrs = typemap.get(i);
             pc.fakeVariant(i, (String) attrs[0], category, rt);

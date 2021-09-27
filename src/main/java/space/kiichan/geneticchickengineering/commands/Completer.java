@@ -7,6 +7,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.util.StringUtil;
+import org.jetbrains.annotations.NotNull;
 import space.kiichan.geneticchickengineering.GeneticChickengineering;
 import space.kiichan.geneticchickengineering.commands.Commands;
 import space.kiichan.geneticchickengineering.commands.subcommands.Subcommand;
@@ -21,20 +22,16 @@ public class Completer implements TabCompleter {
     }
 
     @Override
-    public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
-        List<String> out = new ArrayList<String>();
+    public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String alias, String[] args) {
+        List<String> out = new ArrayList<>();
         if (args.length == 0) {
-            for (String name: this.commands.getSubcommands()) {
-                out.add(name);
-            }
+            out.addAll(this.commands.getSubcommands());
             Collections.sort(out);
         } else {
             Subcommand subcommand = this.commands.getSubcommand(args[0]);
             if (subcommand != null) {
                 String[] subargs = new String[args.length-1];
-                for (int i=0; i < args.length-1; i++) {
-                    subargs[i] = args[i+1];
-                }
+                System.arraycopy(args, 1, subargs, 0, args.length - 1);
                 out = subcommand.onTabComplete(sender, subargs);
             } else {
                 StringUtil.copyPartialMatches(args[0], this.commands.getSubcommands(), out);

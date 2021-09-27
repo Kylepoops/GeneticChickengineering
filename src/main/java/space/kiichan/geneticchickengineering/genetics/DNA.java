@@ -16,7 +16,7 @@ public class DNA {
         for (int i=0; i<6; i++) {
             this.sequence[i] = new gene(alleles[i], state[i]);
         }
-        this.learned = (boolean) boolcast[state[6]];
+        this.learned = boolcast[state[6]];
     }
 
     public DNA(String state) {
@@ -26,7 +26,7 @@ public class DNA {
         for (int i=0; i<6; i++) {
             this.sequence[i] = new gene(alleles[i], Character.getNumericValue(statechars[i]));
         }
-        this.learned = (boolean) boolcast[Character.getNumericValue(statechars[6])];
+        this.learned = boolcast[Character.getNumericValue(statechars[6])];
     }
 
     public DNA(int typing) {
@@ -68,14 +68,14 @@ public class DNA {
         int[] mutations = new Random().ints(0, 6).distinct().limit(maxMutation).toArray();
 
         for (int i=0; i<6; i++) {
-            char notation = Character.toUpperCase(this.alleles[i]);
+            char notation = Character.toUpperCase(alleles[i]);
             char[] markup = {notation, notation};
             // If this index was in the ones randomly chosen,
             // This allele is heterozygous
             final int z = i;
             boolean isMutated = Arrays.stream(mutations).anyMatch(x -> x == z);
             if (isMutated && Math.random()*100 < mutationRate) {
-                markup[1] = this.alleles[i];
+                markup[1] = alleles[i];
             }
             this.sequence[i] = new gene(markup);
         }
@@ -84,11 +84,11 @@ public class DNA {
     }
 
     public String toString() {
-        String out = "";
+        StringBuilder out = new StringBuilder();
         for (int i=0; i<6; i++) {
-            out = out + this.sequence[i].toString();
+            out.append(this.sequence[i].toString());
         }
-        return out;
+        return out.toString();
     }
 
     public char[] split() {

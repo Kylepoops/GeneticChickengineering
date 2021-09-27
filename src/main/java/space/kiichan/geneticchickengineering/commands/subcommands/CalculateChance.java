@@ -86,7 +86,7 @@ public class CalculateChance extends Subcommand {
     
     @Override
     public List<String> onTabComplete(CommandSender sender, String[] args) {
-        LinkedList<String> out = new LinkedList<String>();
+        LinkedList<String> out = new LinkedList<>();
         if (args.length > 0 && args.length < 4) {
             out = this.findDNA(args[args.length-1]);
         }
@@ -94,7 +94,7 @@ public class CalculateChance extends Subcommand {
     }
 
     private LinkedList<String> findDNA(String partial) {
-        LinkedList<String> out = new LinkedList<String>();
+        LinkedList<String> out = new LinkedList<>();
         for (String dna: this.possibleDNA) {
             if (dna.startsWith(partial)) {
                 out.add(dna);
