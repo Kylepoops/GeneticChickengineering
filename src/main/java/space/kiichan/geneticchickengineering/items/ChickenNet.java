@@ -29,15 +29,15 @@ public class ChickenNet extends SimpleSlimefunItem<EntityInteractHandler> implem
 
     @Override
     public @NotNull EntityInteractHandler getItemHandler() {
-        addItemHandler(getSecondItemHandler());
-        return (e, i, o) -> {
-            if (e.getRightClicked().getType() == EntityType.CHICKEN) {
-                Chicken chick = (Chicken) e.getRightClicked();
-                ItemStack pc = this.plugin.convert(chick);
-                World w = chick.getWorld();
-                Location l = chick.getLocation().toCenterLocation();
-                w.dropItemNaturally(l,pc);
-                w.playSound(l, Sound.ENTITY_CHICKEN_EGG, 1F, 1F);
+        addItemHandler(this.getSecondItemHandler());
+        return (event, item, offhand) -> {
+            if (event.getRightClicked().getType() == EntityType.CHICKEN) {
+                Chicken chick = (Chicken) event.getRightClicked();
+                ItemStack pocketChicken = this.plugin.convert(chick);
+                World world = chick.getWorld();
+                Location location = chick.getLocation().toCenterLocation();
+                world.dropItemNaturally(location, pocketChicken);
+                world.playSound(location, Sound.ENTITY_CHICKEN_EGG, 1F, 1F);
                 chick.remove();
             }
         };
