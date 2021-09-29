@@ -54,6 +54,7 @@ public class AnimalsAdapter<T extends Animals> implements MobAdapter<T> {
     public void apply(T entity, JsonObject json) {
         MobAdapter.super.apply(entity, json);
 
+        if (json.get("baby").getAsBoolean()) { entity.setBaby(); }
         entity.setAge(json.get("_age").getAsInt());
         entity.setLoveModeTicks(json.get("_loveModeTicks").getAsInt());
         entity.setAgeLock(json.get("_ageLock").getAsBoolean());
