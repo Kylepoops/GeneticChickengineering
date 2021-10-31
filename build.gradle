@@ -38,14 +38,14 @@ repositories {
 
 dependencies {
     implementation 'com.github.TheBusyBiscuit:CS-CoreLib2:0.29.6'
-    implementation 'org.xerial:sqlite-jdbc:3.36.0.1'
+    implementation 'org.xerial:sqlite-jdbc:3.36.0.2'
     implementation 'io.papermc:paperlib:1.0.6'
     compileOnly 'com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT'
     compileOnly 'com.github.Slimefun:Slimefun4:RC-26'
 }
 
 group = 'space.kiichan'
-version = '1.2.1-RC24 modified by Kylepoops'
+version = '1.2.1-RC26 modified by Kylepoops'
 description = 'GeneticChickengineering'
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 
