@@ -3,6 +3,7 @@ package space.kiichan.geneticchickengineering.i18n;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.Plugin;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.IOException;
@@ -111,7 +112,7 @@ public class Translation {
         });
     }
 
-    private void loadOrSetDefault(YamlConfiguration config) {
+    private void loadOrSetDefault(@NotNull YamlConfiguration config) {
         this.PAPER_WARNING = config.getString("PAPER_WARNING", "Connection to database failed. Aborting initialization.");
         this.PAPER_CHECK = config.getString("PAPER_CHECK", "Check above for more information about the error.");
         this.AVAILABLE_COMMAND = config.getString("AVAILABLE_COMMAND", "Available subcommands:");
