@@ -1,9 +1,10 @@
 package space.kiichan.geneticchickengineering.commands;
 
-import io.github.thebusybiscuit.cscorelib2.config.Config;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+
+import io.github.thebusybiscuit.slimefun4.libraries.dough.config.Config;
 import org.bukkit.command.PluginCommand;
 import space.kiichan.geneticchickengineering.commands.Completer;
 import space.kiichan.geneticchickengineering.commands.Executor;

@@ -1,8 +1,5 @@
 package space.kiichan.geneticchickengineering;
 
-import io.github.thebusybiscuit.cscorelib2.config.Config;
-import io.github.thebusybiscuit.cscorelib2.item.CustomItem;
-import io.github.thebusybiscuit.cscorelib2.updater.GitHubBuildsUpdater;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
@@ -10,6 +7,8 @@ import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.api.researches.Research;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.config.Config;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import io.papermc.lib.PaperLib;
 import java.io.File;
 import java.util.ArrayList;
@@ -101,7 +100,7 @@ public class GeneticChickengineering extends JavaPlugin implements SlimefunAddon
 
         ItemStack[] nullRecipe = new ItemStack[] { null, null, null, null, null, null, null, null, null };
 
-        this.pocketChicken = new PocketChicken(this, itemGroup, GCEItems.POCKET_CHICKEN, mutationRate, maxMutation, displayResources, dnakey, new RecipeType(new NamespacedKey(this, "gce_from_net"), new CustomItem(GCEItems.CHICKEN_NET,"§r§fCapture with a §aChicken Net", "§r§for breed in a §ePrivate Coop")), nullRecipe);
+        this.pocketChicken = new PocketChicken(this, itemGroup, GCEItems.POCKET_CHICKEN, mutationRate, maxMutation, displayResources, dnakey, new RecipeType(new NamespacedKey(this, "gce_from_net"), new CustomItemStack(GCEItems.CHICKEN_NET,"§r§fCapture with a §aChicken Net", "§r§for breed in a §ePrivate Coop")), nullRecipe);
         ChickenNet chickenNet = new ChickenNet(this, itemGroup, GCEItems.CHICKEN_NET, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
             null, new ItemStack(Material.STRING), new ItemStack(Material.STRING),
             null, new ItemStack(Material.STICK), new ItemStack(Material.STRING),
@@ -123,7 +122,7 @@ public class GeneticChickengineering extends JavaPlugin implements SlimefunAddon
             new ItemStack(Material.JUKEBOX), new ItemStack(Material.RED_BED), new ItemStack(Material.POPPY),
             new ItemStack(Material.BIRCH_PLANKS), SlimefunItems.HEATING_COIL, new ItemStack(Material.BIRCH_PLANKS)});
 
-        RecipeType fromChicken = new RecipeType(new NamespacedKey(this, "gce_from_chicken"), new CustomItem(GCEItems.EXCITATION_CHAMBER,tl.RECIPE_EXCITATION_CHAMBER[0], tl.RECIPE_EXCITATION_CHAMBER[1]));
+        RecipeType fromChicken = new RecipeType(new NamespacedKey(this, "gce_from_chicken"), new CustomItemStack(GCEItems.EXCITATION_CHAMBER,tl.RECIPE_EXCITATION_CHAMBER[0], tl.RECIPE_EXCITATION_CHAMBER[1]));
 
         SlimefunItem waterEgg = new ResourceEgg(this, itemGroup, GCEItems.WATER_EGG, Material.WATER, fromChicken, cfg.getOrSetDefault("options.allow-nether-water", false));
         SlimefunItem lavaEgg = new ResourceEgg(this, itemGroup, GCEItems.LAVA_EGG, Material.LAVA, fromChicken, true);

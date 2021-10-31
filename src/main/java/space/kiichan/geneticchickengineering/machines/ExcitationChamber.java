@@ -1,15 +1,13 @@
 package space.kiichan.geneticchickengineering.machines;
 
-import io.github.thebusybiscuit.cscorelib2.inventory.ClickAction;
-import io.github.thebusybiscuit.cscorelib2.inventory.InvUtils;
-import io.github.thebusybiscuit.cscorelib2.inventory.ItemUtils;
-import io.github.thebusybiscuit.cscorelib2.inventory.MenuClickHandler;
-import io.github.thebusybiscuit.cscorelib2.item.CustomItem;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.machines.MachineProcessor;
 import io.github.thebusybiscuit.slimefun4.implementation.operations.CraftingOperation;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.inventory.InvUtils;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.items.ItemUtils;
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
 import java.util.HashMap;
 import java.util.Map;
@@ -32,7 +30,7 @@ public class ExcitationChamber extends AContainer {
     private final PocketChicken pc;
     private ItemStack currentResource;
     public static Map<BlockMenu, ItemStack> resources = new HashMap<>();
-    private final ItemStack blackPane = new CustomItem(Material.BLACK_STAINED_GLASS_PANE, " ");
+    private final ItemStack blackPane = new CustomItemStack(Material.BLACK_STAINED_GLASS_PANE, " ");
     private int failRate;
     private int baseTime;
 

@@ -1,14 +1,14 @@
 package space.kiichan.geneticchickengineering.machines;
 
-import io.github.thebusybiscuit.cscorelib2.inventory.InvUtils;
-import io.github.thebusybiscuit.cscorelib2.inventory.ItemUtils;
-import io.github.thebusybiscuit.cscorelib2.item.CustomItem;
 import java.util.LinkedList;
 import java.util.List;
 
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.inventory.InvUtils;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.items.ItemUtils;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.AContainer;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineRecipe;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
@@ -56,7 +56,7 @@ public class PrivateCoop extends AContainer {
             // Check if parent chickens have been removed
             if (this.getParents(inv).size() != 2) {
                 getMachineProcessor().endOperation(b);
-                inv.replaceExistingItem(22, new CustomItem(Material.BLACK_STAINED_GLASS_PANE, " "));
+                inv.replaceExistingItem(22, new CustomItemStack(Material.BLACK_STAINED_GLASS_PANE, " "));
             }
         }
     }
