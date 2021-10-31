@@ -52,7 +52,7 @@ public class GeneticChickengineering extends JavaPlugin implements SlimefunAddon
     private Research research;
     public DBUtil db;
     public Logger log;
-    private static final Translation tl = LanguageBase.getTranslation();
+    private static Translation tl;
 
     @Override
     public void onEnable() {
@@ -90,6 +90,7 @@ public class GeneticChickengineering extends JavaPlugin implements SlimefunAddon
         }
 
         LanguageBase.setup(this, cfg.getOrSetDefault("options.lang", "en_US"));
+        tl = LanguageBase.getTranslation();
 
         SlimefunItemStack chickenIcon = new SlimefunItemStack("GCE_ICON", "1638469a599ceef7207537603248a9ab11ff591fd378bea4735b346a7fae893", "&eGenetic Chickengineering", "", "&a> Click to open");
         SlimefunItemStack chickenDirectoryIcon = new SlimefunItemStack("GCE_DIRECTORY_ICON", new ItemStack(Material.BLAST_FURNACE), "&eGCE Chicken Directory", "", "&a> Click to open");

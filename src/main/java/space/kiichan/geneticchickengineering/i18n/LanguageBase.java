@@ -1,5 +1,7 @@
 package space.kiichan.geneticchickengineering.i18n;
 
+import io.github.thebusybiscuit.slimefun4.libraries.dough.config.Config;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
@@ -14,7 +16,7 @@ public class LanguageBase {
     public static void setup(@NotNull Plugin plugin, String langName) {
         String fileName = langName + ".yml";
         file = new File(plugin.getDataFolder(), fileName);
-        config = YamlConfiguration.loadConfiguration(file);
+        Config config = new Config(file, YamlConfiguration.loadConfiguration(file));
         translation = new Translation(plugin, config, file);
     }
 
