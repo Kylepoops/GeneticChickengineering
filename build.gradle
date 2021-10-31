@@ -44,7 +44,7 @@ dependencies {
 }
 
 group = 'space.kiichan'
-version = '1.2.1-RC26 modified by Kylepoops'
+version = '1.2.1-RC28 modified by Kylepoops'
 description = 'GeneticChickengineering'
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 
