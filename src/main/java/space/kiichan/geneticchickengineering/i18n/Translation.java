@@ -192,7 +192,7 @@ public class Translation {
         this.LORE_CHICKEN = config.getString("LORE_CHICKEN", "Chicken");
         // GCEItems
         this.POCKET_CHICKEN = this.getStringArray("POCKET_CHICKEN", "§r§bPocket Chicken", "§7Right click on a block", "§7to release the chicken");
-        this.CHICKEN_NET = this.getStringArray("§aChicken Net", "§r§7§oMakes chickens portable");
+        this.CHICKEN_NET = this.getStringArray("CHICKEN_NET", "§aChicken Net", "§r§7§oMakes chickens portable");
         this.WATER_EGG = this.getStringArray("§9Water Egg", "§r§7§oContains water");
         this.LAVA_EGG = this.getStringArray("§cLava Egg", "§r§7§oContains lava");
         this.GENETIC_SEQUENCER = this.getStringArray("§eGenetic Sequencer", "§r§7§oUsed to determine a chicken's genotype");
