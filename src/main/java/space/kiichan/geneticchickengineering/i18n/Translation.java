@@ -106,10 +106,10 @@ public class Translation {
     public Translation(Plugin plugin, YamlConfiguration config, File file) {
         this.plugin = plugin;
         this.config = config;
-        Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> {
+        //Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> {
             loadOrSetDefault(config);
             try { config.save(file); } catch (IOException e) { e.printStackTrace(); }
-        });
+        //});
     }
 
     private void loadOrSetDefault(@NotNull YamlConfiguration config) {
