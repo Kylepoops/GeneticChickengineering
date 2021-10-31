@@ -11,7 +11,7 @@ import space.kiichan.geneticchickengineering.i18n.LanguageBase;
 import space.kiichan.geneticchickengineering.i18n.Translation;
 
 public class Executor implements CommandExecutor {
-    private final Translation tl = LanguageBase.getTranslation();
+    private static final Translation tl = LanguageBase.getTranslation();
     Commands commands;
     GeneticChickengineering plugin;
 
