@@ -41,7 +41,7 @@ dependencies {
     implementation 'org.xerial:sqlite-jdbc:3.36.0.2'
     implementation 'io.papermc:paperlib:1.0.6'
     compileOnly 'com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT'
-    compileOnly 'com.github.Slimefun:Slimefun4:RC-26'
+    compileOnly 'com.github.Slimefun:Slimefun4:RC-28'
 }
 
 group = 'space.kiichan'

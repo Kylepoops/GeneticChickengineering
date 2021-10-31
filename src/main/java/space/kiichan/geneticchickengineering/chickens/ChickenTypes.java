@@ -1,14 +1,13 @@
 package space.kiichan.geneticchickengineering.chickens;
 
-import io.github.thebusybiscuit.slimefun4.core.researching.Research;
+import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
+import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
+import io.github.thebusybiscuit.slimefun4.api.researches.Research;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import me.mrCookieSlime.Slimefun.Lists.RecipeType;
-import me.mrCookieSlime.Slimefun.Objects.Category;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
-import space.kiichan.geneticchickengineering.chickens.PocketChicken;
 import space.kiichan.geneticchickengineering.i18n.LanguageBase;
 import space.kiichan.geneticchickengineering.i18n.Translation;
 import space.kiichan.geneticchickengineering.items.GCEItems;
@@ -104,10 +103,10 @@ public final class ChickenTypes {
         return (ItemStack) typemap.get(typing)[1];
     }
 
-    public static void registerChickens(Research research, PocketChicken pc, Category category, RecipeType rt) {
+    public static void registerChickens(Research research, PocketChicken pc, ItemGroup itemGroup, RecipeType rt) {
         for (int i=typemap.size()-1; i>-1; i--) {
             Object[] attrs = typemap.get(i);
-            pc.fakeVariant(i, (String) attrs[0], category, rt);
+            pc.fakeVariant(i, (String) attrs[0], itemGroup, rt);
         }
         pc.plugin.log.info("Registered "+typemap.size()+" chickens");
     }
