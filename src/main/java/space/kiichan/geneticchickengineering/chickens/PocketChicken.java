@@ -28,6 +28,8 @@ import org.jetbrains.annotations.NotNull;
 import space.kiichan.geneticchickengineering.GeneticChickengineering;
 import space.kiichan.geneticchickengineering.adapter.AnimalsAdapter;
 import space.kiichan.geneticchickengineering.genetics.DNA;
+import space.kiichan.geneticchickengineering.i18n.LanguageBase;
+import space.kiichan.geneticchickengineering.i18n.Translation;
 
 public class PocketChicken<T extends LivingEntity> extends SimpleSlimefunItem<ItemUseHandler> implements NotPlaceable {
 
@@ -38,6 +40,7 @@ public class PocketChicken<T extends LivingEntity> extends SimpleSlimefunItem<It
     private int mutationRate;
     private int maxMutation;
     private boolean displayResources;
+    private static final Translation tl = LanguageBase.getTranslation();
 
     public PocketChicken(GeneticChickengineering plugin, Category category, SlimefunItemStack item, int mutationRate, int maxMutation, boolean displayResources, NamespacedKey dnakey, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);
@@ -266,21 +269,21 @@ public class PocketChicken<T extends LivingEntity> extends SimpleSlimefunItem<It
             lore = adapter.getLore(json);
             if (this.plugin.painEnabled()) {
                 double health = json.get("_health").getAsDouble();
-                String status = ChatColor.GOLD + "Status: ";
+                String status = ChatColor.GOLD + tl.LORE_STATUS + ": ";
                 if (health > 2.0) {
-                    status = status + ChatColor.GREEN + "Healthy";
+                    status = status + ChatColor.GREEN + tl.LORE_HEALTHY;
                 } else if (health <= 0.50) {
-                    status = status + ChatColor.RED + "Exhausted";
+                    status = status + ChatColor.RED + tl.LORE_EXHAUSTED;
                 } else {
-                    status = status + ChatColor.YELLOW + "Fatigued";
+                    status = status + ChatColor.YELLOW + tl.LORE_FATIGUED;
                 }
                 lore.add(status);
             }
         }
         if (dna.isKnown()) {
             String chicktype = ChickenTypes.getName(dna.getTyping());
-            lore.add(ChatColor.GOLD + "DNA: " + ChatColor.RESET + dna.toString());
-            lore.add(ChatColor.GOLD + "Type: " + ChatColor.RESET + chicktype + " Chicken");
+            lore.add(ChatColor.GOLD + tl.LORE_DNA + ": " + ChatColor.RESET + dna.toString());
+            lore.add(ChatColor.GOLD + tl.LORE_TYPE + ": " + ChatColor.RESET + chicktype + " " + tl.LORE_CHICKEN);
         }
         return lore;
     }

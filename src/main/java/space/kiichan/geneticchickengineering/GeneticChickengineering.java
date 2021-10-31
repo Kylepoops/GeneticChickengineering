@@ -31,6 +31,7 @@ import space.kiichan.geneticchickengineering.chickens.PocketChicken;
 import space.kiichan.geneticchickengineering.commands.Commands;
 import space.kiichan.geneticchickengineering.database.DBUtil;
 import space.kiichan.geneticchickengineering.i18n.LanguageBase;
+import space.kiichan.geneticchickengineering.i18n.Translation;
 import space.kiichan.geneticchickengineering.items.ChickenNet;
 import space.kiichan.geneticchickengineering.items.GCEItems;
 import space.kiichan.geneticchickengineering.items.ResourceEgg;
@@ -52,6 +53,7 @@ public class GeneticChickengineering extends JavaPlugin implements SlimefunAddon
     private Research research;
     public DBUtil db;
     public Logger log;
+    private static final Translation tl = LanguageBase.getTranslation();
 
     @Override
     public void onEnable() {
@@ -121,7 +123,7 @@ public class GeneticChickengineering extends JavaPlugin implements SlimefunAddon
             new ItemStack(Material.JUKEBOX), new ItemStack(Material.RED_BED), new ItemStack(Material.POPPY),
             new ItemStack(Material.BIRCH_PLANKS), SlimefunItems.HEATING_COIL, new ItemStack(Material.BIRCH_PLANKS)});
 
-        RecipeType fromChicken = new RecipeType(new NamespacedKey(this, "gce_from_chicken"), new CustomItem(GCEItems.EXCITATION_CHAMBER,"§r§fObtained from a §bPocket Chicken", "&fin an §eExcitation Chamber"));
+        RecipeType fromChicken = new RecipeType(new NamespacedKey(this, "gce_from_chicken"), new CustomItem(GCEItems.EXCITATION_CHAMBER,tl.RECIPE_EXCITATION_CHAMBER[0], tl.RECIPE_EXCITATION_CHAMBER[1]));
 
         SlimefunItem waterEgg = new ResourceEgg(this, category, GCEItems.WATER_EGG, Material.WATER, fromChicken, cfg.getOrSetDefault("options.allow-nether-water", false));
         SlimefunItem lavaEgg = new ResourceEgg(this, category, GCEItems.LAVA_EGG, Material.LAVA, fromChicken, true);

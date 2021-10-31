@@ -81,6 +81,14 @@ public class Translation {
     public String TYPE_XP;
     public String TYPE_EMERALD;
     public String TYPE_NETHERITE;
+    // PocketChicken Lore
+    public String LORE_STATUS;
+    public String LORE_HEALTHY;
+    public String LORE_EXHAUSTED;
+    public String LORE_FATIGUED;
+    public String LORE_DNA;
+    public String LORE_TYPE;
+    public String LORE_CHICKEN;
     // GCEItems
     public String[] POCKET_CHICKEN;
     public String[] CHICKEN_NET;
@@ -91,6 +99,8 @@ public class Translation {
     public String[] EXCITATION_CHAMBER_2;
     public String[] PRIVATE_COOP;
     public String[] RESTORATION_CHAMBER;
+    // Recipe
+    public String[] RECIPE_EXCITATION_CHAMBER;
 
     public Translation(Plugin plugin, YamlConfiguration config, File file) {
         this.plugin = plugin;
@@ -171,6 +181,15 @@ public class Translation {
         this.TYPE_XP = config.getString("TYPE_XP", "XP");
         this.TYPE_EMERALD = config.getString("TYPE_EMERALD", "Emerald");
         this.TYPE_NETHERITE = config.getString("TYPE_NETHERITE", "Netherite");
+        // PocketChicken Lore
+        this.LORE_STATUS = config.getString("LORE_STATUS", "Status");
+        this.LORE_HEALTHY = config.getString("LORE_HEALTHY", "Healthy");
+        this.LORE_EXHAUSTED = config.getString("LORE_EXHAUSTED", "Exhausted");
+        this.LORE_FATIGUED = config.getString("LORE_FATIGUED", "Fatigued");
+        this.LORE_DNA = config.getString("LORE_DNA", "DNA");
+        this.LORE_TYPE = config.getString("LORE_TYPE", "TYPE");
+        this.LORE_CHICKEN = config.getString("LORE_CHICKEN", "Chicken");
+        // GCEItems
         this.POCKET_CHICKEN = this.getStringArray("POCKET_CHICKEN", "§r§bPocket Chicken", "§7Right click on a block", "§7to release the chicken");
         this.CHICKEN_NET = this.getStringArray("§aChicken Net", "§r§7§oMakes chickens portable");
         this.WATER_EGG = this.getStringArray("§9Water Egg", "§r§7§oContains water");
@@ -180,7 +199,8 @@ public class Translation {
         this.EXCITATION_CHAMBER_2 = this.getStringArray("§eBoosted Excitation Chamber", "§r§7§oEnables chickens to produce a resource,", "§r§7§obut faster");
         this.PRIVATE_COOP = this.getStringArray("§ePrivate Coop", "§ePrivate Coop", "§r§7§oBig enough for two...");
         this.RESTORATION_CHAMBER = this.getStringArray("§eRestoration Chamber", "§r§7§oHeals Pocket Chickens");
-
+        // Recipe
+        this.RECIPE_EXCITATION_CHAMBER = this.getStringArray("RECIPE_EXCITATION_CHAMBER", "§r§fObtained from a §bPocket Chicken", "&fin an §eExcitation Chamber");
 
 
         //TODO: ALL MESSAGE
