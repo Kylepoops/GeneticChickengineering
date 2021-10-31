@@ -7,8 +7,11 @@ import org.jetbrains.annotations.NotNull;
 import space.kiichan.geneticchickengineering.GeneticChickengineering;
 import space.kiichan.geneticchickengineering.commands.Commands;
 import space.kiichan.geneticchickengineering.commands.subcommands.Subcommand;
+import space.kiichan.geneticchickengineering.i18n.LanguageBase;
+import space.kiichan.geneticchickengineering.i18n.Translation;
 
 public class Executor implements CommandExecutor {
+    private final Translation tl = LanguageBase.getTranslation();
     Commands commands;
     GeneticChickengineering plugin;
 
@@ -20,7 +23,7 @@ public class Executor implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String alias, String[] args) {
         if (args.length == 0) {
-            sender.sendMessage("Available subcommands:");
+            sender.sendMessage(tl.AVAILABLE_COMMAND);
             for (String name: this.commands.getSubcommands()) {
                 sender.sendMessage("    "+name);
             }
@@ -32,7 +35,7 @@ public class Executor implements CommandExecutor {
             System.arraycopy(args, 1, subargs, 0, args.length - 1);
             return subcommand.onExecute(sender, subargs);
         } else {
-            sender.sendMessage("Invalid subcommand: "+args[0]);
+            sender.sendMessage(tl.INVALID_COMMAND + args[0]);
         }
         return false;
     }

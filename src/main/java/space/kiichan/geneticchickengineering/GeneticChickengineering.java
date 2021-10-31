@@ -30,6 +30,7 @@ import space.kiichan.geneticchickengineering.chickens.ChickenTypes;
 import space.kiichan.geneticchickengineering.chickens.PocketChicken;
 import space.kiichan.geneticchickengineering.commands.Commands;
 import space.kiichan.geneticchickengineering.database.DBUtil;
+import space.kiichan.geneticchickengineering.i18n.LanguageBase;
 import space.kiichan.geneticchickengineering.items.ChickenNet;
 import space.kiichan.geneticchickengineering.items.GCEItems;
 import space.kiichan.geneticchickengineering.items.ResourceEgg;
@@ -86,6 +87,8 @@ public class GeneticChickengineering extends JavaPlugin implements SlimefunAddon
         if (cfg.getOrSetDefault("options.auto-update", false) && getDescription().getVersion().startsWith("DEV - ")) {
             //new GitHubBuildsUpdater(this, getFile(), "kii-chan-reloaded/GeneticChickengineering/master").start();
         }
+
+        LanguageBase.setup(this, cfg.getOrSetDefault("options.lang", "en_US"));
 
         SlimefunItemStack chickenIcon = new SlimefunItemStack("GCE_ICON", "1638469a599ceef7207537603248a9ab11ff591fd378bea4735b346a7fae893", "&eGenetic Chickengineering", "", "&a> Click to open");
         SlimefunItemStack chickenDirectoryIcon = new SlimefunItemStack("GCE_DIRECTORY_ICON", new ItemStack(Material.BLAST_FURNACE), "&eGCE Chicken Directory", "", "&a> Click to open");
